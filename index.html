@@ -1035,17 +1035,23 @@ form p label {
             <div class="contact-form">
                 <h3 class="main-heading"><span>Let's keep in touch</span></h3>
                 <div id="contact-status"></div>
-                <form action="#" id="contactform">
+                <form name="google-sheet" autocomplete="off" method="POST" >
                     <p>
 					<div class="form-group">
-						<input type="text" id="name" class="form-control" required>
+						<input type="text" id="name" name="name" class="form-control" required>
 						<label class="form-control-placeholder" for="name">Your Name</label>
 					</div>
                     </p>
                     <p>
 					<div class="form-group">
-						<input type="text" id="email" class="form-control" required>
+						<input type="text" id="email" name="email" class="form-control" required>
 						<label class="form-control-placeholder" for="email">Your Email</label>
+					</div>
+                    </p>
+                    <p>
+					<div class="form-group">
+						<input type="number" id="email" name="number" class="form-control" required>
+						<label class="form-control-placeholder" for="PH no.">Your Ph no.</label>
 					</div>
                     </p>
                     <p>
@@ -1075,5 +1081,18 @@ form p label {
 <script src="js/main.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
+<script>
+   const scriptURL = 'https://script.google.com/macros/s/AKfycbx371WkXgk4I6R01gRUfPlxgqCQEb3A_9M2vXy14LJF_Ue8mjJLANVB/exec'
+   const form = document.forms['google-sheet']
+ 
+   form.addEventListener('submit', e => {
+     e.preventDefault()
+     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+       .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+       .catch(error => console.error('Error!', error.message))
+   })
+ </script>
+
+
 </body>
 </html>
