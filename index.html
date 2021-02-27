@@ -1084,7 +1084,7 @@ form p label {
 <script>
    const scriptURL = 'https://script.google.com/macros/s/AKfycbx371WkXgk4I6R01gRUfPlxgqCQEb3A_9M2vXy14LJF_Ue8mjJLANVB/exec'
    const form = document.forms['google-sheet']
- 
+   var name = document.getElementById('name');
    form.addEventListener('submit', e => {
      e.preventDefault()
      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
